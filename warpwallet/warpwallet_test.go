@@ -1,4 +1,4 @@
-package warpwallet
+package main
 
 import "testing"
 import "fmt"

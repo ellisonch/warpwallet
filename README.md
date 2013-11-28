@@ -26,6 +26,7 @@ Finally, you should be able to do a:
 ```
 go get github.com/ellisonch/warpwallet
 ```
+If that doesn't work (I haven't had much luck with it, let me know how to fix it!) just download this repo and run `go build` in the `warpwallet` directory.  This will create a `warpwallet` executable that you can then run.
 
 ## Test
 To run the test suite:

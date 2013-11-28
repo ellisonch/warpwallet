@@ -42,7 +42,7 @@
 // ScalarBaseMult). But even for Add and Double, it's faster to apply and
 // reverse the transform than to operate in affine coordinates.
 
-package warpwallet
+package main
 
 import "math/big"
 import "sync"
