@@ -1,9 +1,7 @@
 # WarpWallet
-This is an implementation of [https://keybase.io/warp](WarpWallet) in Go.  
-WarpWallet is a brain wallet generator (bit Bitcoin), originally written by [https://github.com/maxtaco](Max Krohn) and [https://github.com/malgorithms](Chris Coyne).
+This is an implementation of [https://keybase.io/warp](WarpWallet) in Go.  WarpWallet is a brain wallet generator (bit Bitcoin), originally written by [https://github.com/maxtaco](Max Krohn) and [https://github.com/malgorithms](Chris Coyne).
 
-Except for neeeding to referencing some hash functions (described below), this package is entirely self contained.  
-It is released under the BSD 2-Clause license, and includes some BSD-style code from [https://github.com/thepiachu](ThePiachu).
+Except for neeeding to referencing some hash functions (described below), this package is entirely self contained.  It is released under the BSD 2-Clause license, and includes some BSD-style code from [https://github.com/thepiachu](ThePiachu).
 
 This program has been tested under Linux and Windows.
 
