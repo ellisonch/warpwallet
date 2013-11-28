@@ -1,7 +1,7 @@
 # WarpWallet
-This is an implementation of [https://keybase.io/warp](WarpWallet) in Go.  WarpWallet is a brain wallet generator (bit Bitcoin), originally written by [https://github.com/maxtaco](Max Krohn) and [https://github.com/malgorithms](Chris Coyne).
+This is an implementation of [WarpWallet](https://keybase.io/warp) in Go.  WarpWallet is a brain wallet generator (for Bitcoin), originally written by [Max Krohn](https://github.com/maxtaco) and [Chris Coyne](https://github.com/malgorithms).  You can use it to turn passphrases into Bitcoin wallets, so your money is as safe as your memory :)
 
-Except for neeeding to referencing some hash functions (described below), this package is entirely self contained.  It is released under the BSD 2-Clause license, and includes some BSD-style code from [https://github.com/thepiachu](ThePiachu).
+Except for referencing some hash functions (described below), this package is entirely self contained.  It is released under the BSD 2-clause license, and includes some BSD-style code from [ThePiachu](https://github.com/thepiachu).
 
 This program has been tested under Linux and Windows.
 
@@ -29,18 +29,7 @@ go get github.com/ellisonch/warpwallet
 If that doesn't work (I haven't had much luck with it, let me know how to fix it!) just download this repo and run `go build` in the `warpwallet` directory.  This will create a `warpwallet` executable that you can then run.
 
 ## Test
-To run the test suite:
-
-```
-go test github.com/ellisonch/warpwallet
-```
-
-## Build
-To run the program, if you have `$GOPATH` in your `$PATH`, you should be able to run `warpwallet`.  Otherwise, run
-
-```
-$GOPATH/bin/warpwallet
-```
+To run the test suite, just run `go test` inside the `warpwallet` directory.
 
 ## Love
 If you found this useful, please send me some love at `1GGCFrshLz46tdas9ZtKqX59n5UAFzR6sD` :)
