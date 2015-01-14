@@ -23,7 +23,13 @@
 
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
+
 import "crypto/sha256"
 
 import "code.google.com/p/go.crypto/scrypt"
@@ -34,16 +40,23 @@ func main() {
 	var passphrase string
 	var salt string
 
+	in := bufio.NewReader(os.Stdin)
 	fmt.Printf("Please enter your passphrase: ")
-	_, err := fmt.Scanf("%s", &passphrase)
+
+	s, err := in.ReadString('\n')
 	if err != nil {
+		fmt.Println(err)
 		panic("Trouble reading passphrase")
 	}
+	passphrase = strings.TrimSpace(s)
+
 	fmt.Printf("Please enter your salt: ")
-	_, err = fmt.Scanf("%s", &salt)
+	s, err = in.ReadString('\n')
 	if err != nil {
+		fmt.Println(err)
 		panic("Trouble reading salt")
 	}
+	salt = strings.TrimSpace(s)
 
 	private, address := generate(passphrase, salt)
 	fmt.Printf("Private key: %s\n", private)
