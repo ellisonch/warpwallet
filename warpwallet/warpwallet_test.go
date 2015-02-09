@@ -24,6 +24,10 @@ var tests []Test = []Test {
 	Test{"Brd8TB3EDhegSx2wy2ffW0oGNC29vkCo", "dUBIrYPiUZ6BD/l+zBhthA", "5KF4ozGWXGZAqNydQg65JQ4XnJaUpBkU9g59C287GrbLfWVmYHL", "1CD93Tgj74uKh87dENR2GMWB1kpCidLZiS"},
 	Test{"eYuYtFxU4KrePYrbHSi/8ncAKEb+KbNH", "le5MMmWaj4AlGcRevRPEdw", "5KCK9EtgvjsQcPcZcfMoqcHwZKzA1MLfPUvDCYE1agiNf56CfAk", "18mugeQN8uecTBE9psW2uQrhRBXZJkhyB7"},
 	Test{"TRGmdIHpnsSXjEnLc+U+MrRV3ryo8trG", "DhZNEt9hx08i6uMXo5DOyg", "5JhBaSsxgNBjvZWVfdVQsnMzYf4msHMQ7HRaHLvvMy1CEgsTstg", "19QCgqHnKw8vrJph7wWP3nKg9tFixqYwiB"},
+	Test{"a", "b@c.com", "5KVacyFtvYFRGj4ZCcim6zWo41RZiWANfsN2wPevEDisxWTjwZ8", "13GVgSA5z2vQY1BZjjmmBxNjPuqxzhx8uo"},
+	Test{"xxx yyy", "zzz@foo.com", "5KZfReRpyvNCipA4HkSFtfzY4YWKZVzMcTqpmYBXmiyh5imjKSK", "1LLQMfJKcDtabU9XmP1QsPY72eRoE9f9Md"},
+	Test{"xxxyyy ", "zzz@foo.com", "5KTDSa7GyY9WAuY9nNm5dzoVNgCTB9wGP11rLDPNVh5iyMX2BcD", "1FAD14n6ZgDy2nNsS6cGggmTkQxtttgz36"},
+	// Test{"", "", "", ""},
 }
 
 func TestBasic(t *testing.T) {
