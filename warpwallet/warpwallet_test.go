@@ -2,6 +2,8 @@ package main
 
 import "testing"
 import "fmt"
+import "strings"
+import "io/ioutil"
 
 type Test struct {
 	passphrase string
@@ -34,7 +36,10 @@ func TestBasic(t *testing.T) {
 	fmt.Printf("This takes a while, so hold on :)\n")
     for i, test := range tests {
     	fmt.Printf("Testing %d of %d...\n", i+1, len(tests))
-    	private, address := generate(test.passphrase, test.salt)
+
+    	pass, salt := getInputFromUser(ioutil.Discard, strings.NewReader(test.passphrase + "\n" + test.salt + "\n"))
+
+    	private, address := generate(pass, salt)
     	if private != test.private {
 			t.Errorf("%s, %s: expected private %s, got %s", test.passphrase, test.salt, test.private, private)
 		}

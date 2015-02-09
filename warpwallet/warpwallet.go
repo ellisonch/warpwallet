@@ -23,46 +23,57 @@
 
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"os"
-	"strings"
-)
-
+import "fmt"
+import "bufio"
+import "io"
+import "os"
 import "crypto/sha256"
+import "strings"
 
 import "code.google.com/p/go.crypto/scrypt"
 import "code.google.com/p/go.crypto/pbkdf2"
 import "code.google.com/p/go.crypto/ripemd160"
 
 func main() {
-	var passphrase string
-	var salt string
-
-	in := bufio.NewReader(os.Stdin)
-	fmt.Printf("Please enter your passphrase: ")
-
-	s, err := in.ReadString('\n')
-	if err != nil {
-		fmt.Println(err)
-		panic("Trouble reading passphrase")
-	}
-	passphrase = strings.TrimSpace(s)
-
-	fmt.Printf("Please enter your salt: ")
-	s, err = in.ReadString('\n')
-	if err != nil {
-		fmt.Println(err)
-		panic("Trouble reading salt")
-	}
-	salt = strings.TrimSpace(s)
-
+	passphrase, salt := getInputFromUser(os.Stdout, os.Stdin)
 	private, address := generate(passphrase, salt)
 	fmt.Printf("Private key: %s\n", private)
 	fmt.Printf("Public address: %s\n", address)
 }
 
+// to put a nice wrapper around dealing with input/output streams (helps with testing)
+func getInputFromUser(ostream io.Writer, istream io.Reader) (string, string) {
+	scanner := bufio.NewScanner(istream)
+
+	fmt.Fprintf(ostream, "Please enter your passphrase: ")
+	passphrase := readln(scanner);
+	if strings.HasSuffix(passphrase, "\r") {
+		fmt.Fprintf(ostream, "CAUTION!  Your passphrase ends with a \\r character.  Proceeding anyway...\n");
+	}
+	
+	fmt.Fprintf(ostream, "Please enter your salt: ")
+	salt := readln(scanner);
+	if strings.HasSuffix(salt, "\r") {
+		fmt.Fprintf(ostream, "CAUTION!  Your salt ends with a \\r character.  Proceeding anyway...\n");
+	}
+
+	return passphrase, salt
+}
+
+// reads a single line from the scanner.  does not return separator
+func readln(scanner *bufio.Scanner) (string) {
+	
+	if scanner.Scan() {
+	    return scanner.Text();
+	}
+
+	if err := scanner.Err(); err != nil {
+	    panic(fmt.Sprintf("Trouble reading input: %v", err))
+	}
+	panic("Trouble reading input.")
+}
+
+// actually turns a passphrase + salt into a public + private
 func generate(passphrase string, salt string) (string, string) {
 	secret := secret([]byte(passphrase), []byte(salt))
 
@@ -126,7 +137,7 @@ func s1(passphrase []byte, salt []byte) []byte {
 	passphrase = append(passphrase, 1)
 	s1, err := scrypt.Key(passphrase, salt, 262144, 8, 1, 32)
 	if err != nil {
-		panic(fmt.Sprintf("err: %v\n", err))
+		panic(fmt.Sprintf("err: %v", err))
 	}
 	return s1
 }
