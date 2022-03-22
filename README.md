@@ -34,4 +34,4 @@ If the above instructions don't work, download this repo and run `go build` in t
 To run the test suite, just run `go test` inside the `warpwallet` directory.
 
 ## Love
-If you found this useful, please send me some love at `1GGCFrshLz46tdas9ZtKqX59n5UAFzR6sD` :)
+If you found this useful, please send me some BTC love at `342EjvnEVZMswiUxhGi7zE9EbKZ2Ygh5JU` :)
